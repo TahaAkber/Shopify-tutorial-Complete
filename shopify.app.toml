@@ -1,0 +1,36 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "1d226271b95f14fe389025bf3396f96d"
+application_url = "https://grove-interior-translations-lead.trycloudflare.com"
+embedded = true
+name = "testing-prisma"
+handle = "testing-prisma"
+
+[build]
+include_config_on_deploy = true
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2025-01"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://grove-interior-translations-lead.trycloudflare.com/auth/callback",
+  "https://grove-interior-translations-lead.trycloudflare.com/auth/shopify/callback",
+  "https://grove-interior-translations-lead.trycloudflare.com/api/auth/callback"
+]
+
+[pos]
+embedded = false
